@@ -1,0 +1,11 @@
+# ============================================================================
+# Xilinx ISE 14.7 Timing Constraints - 90 nm Virtex-4 (xc4vlx15-12-sf363)
+# Design Strategy: Timing Performance -> Performance without IOB Packing
+# ============================================================================
+# Reference Periods per Design:
+#   - SN_encodingSystem_top (SN Encoder Only):        4.600 ns (~217 MHz)
+#   - SN_encoding_system_top (MF + SN Encoder):       6.000 ns (~167 MHz)
+#   - MN_encoding_system_top_v1 (MF + MN Encoder):    6.000 ns (~167 MHz)
+
+NET "clk" TNM_NET = "clk";
+TIMESPEC "TS_clk" = PERIOD "clk" 6.000 ns HIGH 50%;

@@ -1,0 +1,13 @@
+# ============================================================================
+# Xilinx ISE 14.7 Timing Constraints - 45 nm Spartan-6 (xc6slx45-3-fgg484)
+# Design Strategy: Timing Performance -> Performance without IOB Packing
+# ============================================================================
+# Reference Periods per Design:
+#   - SN_encodingSystem_top (SN Encoder Only):        5.000 ns (~200 MHz)
+#   - SN_encoding_system_top (MF + SN Encoder):       6.800 ns (~148 MHz)
+#   - MN_encoding_system_top_v1 (MF + MN Encoder):    7.200 ns (~139 MHz)
+#   - HLB_MN_encoding_system_top_v1 (HLB MN Encoder): 6.200 ns (~161 MHz)
+#   - MF_HLB_MN_encoding_system_top (MF + HLB MN):    6.600 ns (~151 MHz)
+
+NET "clk" TNM_NET = "clk";
+TIMESPEC "TS_clk" = PERIOD "clk" 6.600 ns HIGH 50%;

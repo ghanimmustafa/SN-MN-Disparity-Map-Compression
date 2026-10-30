@@ -1,0 +1,647 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+               Version S-2021.06-SP5 for linux64 - Jan 11, 2022 
+
+                    Copyright (c) 1988 - 2022 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+Initializing...
+set clkPer 2.0 
+2.0
+#set top_module
+set search_path [list . ../common]
+. ../common
+read_db sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db
+Loading db file '/eda/synopsys/syn/S-2021.06-SP5/libraries/syn/gtech.db'
+Loading db file '/eda/synopsys/syn/S-2021.06-SP5/libraries/syn/standard.sldb'
+  Loading link library 'gtech'
+Loading db file '/2tb/home/ghanim/Desktop/depth_compression_hw/common/sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db'
+Loaded 0 designs.
+set target_library [list sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db]
+sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db
+set link_library [list * dw_foundation.sldb sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db]
+* dw_foundation.sldb sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db
+define_design_lib USER -path ./work/
+1
+set moduleList [list top_module MN_decoder_line_buffer ]
+top_module MN_decoder_line_buffer
+foreach module $moduleList {
+    analyze -format verilog -lib USER $module.v
+}
+Running PRESTO HDLC
+Compiling source file ./top_module.v
+Presto compilation completed successfully.
+Loading db file '/eda/synopsys/syn/S-2021.06-SP5/libraries/syn/dw_foundation.sldb'
+Running PRESTO HDLC
+Compiling source file ./MN_decoder_line_buffer.v
+Presto compilation completed successfully.
+elaborate top_module -lib USER
+Running PRESTO HDLC
+Warning:  ./top_module.v:158: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./top_module.v:272: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./top_module.v:283: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./top_module.v:285: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./top_module.v:262: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./top_module.v:297: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./top_module.v:294: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./top_module.v:328: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./top_module.v:330: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./top_module.v:366: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./top_module.v:368: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./top_module.v:448: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./top_module.v:450: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./top_module.v:472: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./top_module.v:474: signed to unsigned conversion occurs. (VER-318)
+
+Statistics for case statements in always block at line 128 in file
+	'./top_module.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           244            |     no/auto      |
+|           300            |     no/auto      |
+|           415            |     no/auto      |
+===============================================
+
+Inferred memory devices in process
+	in routine top_module line 80 in file
+		'./top_module.v'.
+==================================================================================
+|     Register Name      |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+==================================================================================
+|     top_temp_1_reg     | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|     prev_state_reg     | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+|    decoder_out_reg     | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+| memory_word_buffer_reg | Flip-flop |  128  |  Y  | N  | N  | N  | N  | N  | N  |
+|   packet_decoded_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|     hsynch_dec_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|     vsynch_dec_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|    line_cnt_dec_reg    | Flip-flop |  12   |  Y  | N  | N  | N  | N  | N  | N  |
+|   column_cnt_dec_reg   | Flip-flop |  12   |  Y  | N  | N  | N  | N  | N  | N  |
+|   decoder_state_reg    | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+|      mw_index_reg      | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|  remaning_bits_r_reg   | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|      LSB_part_reg      | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|      MSB_part_reg      | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|        flag_reg        | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|       adr_0_reg        | Flip-flop |  12   |  Y  | N  | N  | N  | N  | N  | N  |
+|       adr_1_reg        | Flip-flop |  12   |  Y  | N  | N  | N  | N  | N  | N  |
+|     valid_dec_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|     valid_in_r_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|  top_right_temp_1_reg  | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|   buffer_header_reg    | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+==================================================================================
+Statistics for MUX_OPs
+======================================================
+| block name/line  | Inputs | Outputs | # sel inputs |
+======================================================
+|  top_module/69   |  128   |    1    |      7       |
+|  top_module/460  |  128   |    1    |      7       |
+======================================================
+Presto compilation completed successfully. (top_module)
+Elaborated 1 design.
+Current design is now 'top_module'.
+Information: Building the design 'MN_decoder_line_buffer'. (HDL-193)
+Presto compilation completed successfully. (MN_decoder_line_buffer)
+1
+current_design top_module
+Current design is 'top_module'.
+{top_module}
+link
+
+  Linking design 'top_module'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (2 designs)               /2tb/home/ghanim/Desktop/depth_compression_hw/mn_decoder/top_module.db, etc
+  dw_foundation.sldb (library) /eda/synopsys/syn/S-2021.06-SP5/libraries/syn/dw_foundation.sldb
+  sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c (library) /2tb/home/ghanim/Desktop/depth_compression_hw/common/sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db
+
+1
+uniquify
+1
+current_design top_module
+Current design is 'top_module'.
+{top_module}
+set_max_area 0
+1
+#set_wire_load_model -name "W40000"
+set_wire_load_mode top
+1
+create_clock -name clk -period $clkPer clk
+1
+#optimize_registers 
+#balance_registers starMult
+#-sync_trans multiclass
+compile_ultra -no_autoungroup -timing_high_effort_script
+Warning: The -timing_high_effort_script option is ignored.  (OPT-1342)
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | S-2021.06-DWBB_202106.5 |     *     |
+| Licensed DW Building Blocks        | S-2021.06-DWBB_202106.5 |     *     |
+============================================================================
+
+============================================================================
+| Flow Information                                                         |
+----------------------------------------------------------------------------
+| Flow         | Design Compiler WLM                                       |
+============================================================================
+| Design Information                                      | Value          |
+============================================================================
+| Number of Scenarios                                     | 0              |
+| Leaf Cell Count                                         | 28891          |
+| Number of User Hierarchies                              | 0              |
+| Sequential Cell Count                                   | 251            |
+| Macro Count                                             | 0              |
+| Number of Power Domains                                 | 0              |
+| Design with UPF Data                                    | false          |
+============================================================================
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+
+Information: There are 15 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+  Simplifying Design 'top_module'
+
+Loaded alib file './alib-52/sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db.alib'
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'top_module'
+Information: Added key list 'DesignWare' to design 'top_module'. (DDB-72)
+Information: The register 'decoder_state_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'MSB_part_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'LSB_part_reg[7]' is a constant and will be removed. (OPT-1206)
+ Implement Synthetic for 'top_module'.
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: The library cell 'TIELO_X1M_A12TR40' in the library 'sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'TIEHI_X1M_A12TR40' in the library 'sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c' is not characterized for internal power. (PWR-536)
+Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
+Information: The register 'prev_state_reg[3]' is a constant and will be removed. (OPT-1206)
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:13    4705.0      0.00       0.0      13.5                            125.3761
+    0:00:13    4417.1      0.13       1.7       5.3                            116.5817
+
+  Beginning Constant Register Removal
+  -----------------------------------
+Information: The register 'mw_index_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'remaning_bits_r_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'remaning_bits_r_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'remaning_bits_r_reg[3]' is a constant and will be removed. (OPT-1206)
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+  Mapping 'top_module_DP_OP_402J1_134_50_0'
+  Mapping 'top_module_DP_OP_375J1_128_9761_0'
+
+  Beginning Isolate Ports
+  -----------------------
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:00:15    2874.7      0.00       0.0       0.0                             44.3885
+    0:00:15    2874.7      0.00       0.0       0.0                             44.3885
+    0:00:15    2874.7      0.00       0.0       0.0                             44.3885
+    0:00:15    2874.1      0.00       0.0       0.0                             44.3724
+Information: The register 'LSB_part_reg[6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'MSB_part_reg[1]' is a constant and will be removed. (OPT-1206)
+    0:00:15    2846.0      0.00       0.0       0.0                             43.7164
+    0:00:15    2841.8      0.00       0.0       0.0                             43.6636
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:00:16    2802.6      0.00       0.0       0.0                             42.1324
+    0:00:16    2802.6      0.00       0.0       0.0                             42.1324
+    0:00:16    2802.6      0.00       0.0       0.0                             42.1324
+    0:00:16    2662.8      0.00       0.0       0.0                             33.5313
+    0:00:16    2662.8      0.00       0.0       0.0                             33.5313
+    0:00:16    2662.8      0.00       0.0       0.0                             33.5313
+    0:00:16    2662.8      0.00       0.0       0.0                             33.5313
+    0:00:16    2662.8      0.00       0.0       0.0                             33.5313
+    0:00:16    2662.8      0.00       0.0       0.0                             33.5313
+    0:00:16    2662.8      0.00       0.0       0.0                             33.5313
+    0:00:16    2662.8      0.00       0.0       0.0                             33.5313
+    0:00:16    2662.8      0.00       0.0       0.0                             33.5313
+    0:00:16    2662.8      0.00       0.0       0.0                             33.5313
+    0:00:16    2662.8      0.00       0.0       0.0                             33.5313
+    0:00:16    2662.8      0.00       0.0       0.0                             33.5313
+    0:00:16    2662.8      0.00       0.0       0.0                             33.5313
+    0:00:16    2662.8      0.00       0.0       0.0                             33.5313
+    0:00:16    2662.8      0.00       0.0       0.0                             33.5313
+    0:00:16    2662.8      0.00       0.0       0.0                             33.5313
+    0:00:16    2662.8      0.00       0.0       0.0                             33.5313
+    0:00:16    2662.8      0.00       0.0       0.0                             33.5313
+    0:00:16    2662.8      0.00       0.0       0.0                             33.5313
+    0:00:16    2662.8      0.00       0.0       0.0                             33.5313
+    0:00:16    2662.8      0.00       0.0       0.0                             33.5313
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:16    2662.8      0.00       0.0       0.0                             33.5313
+  Global Optimization (Phase 31)
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+  Global Optimization (Phase 34)
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+  Global Optimization (Phase 42)
+  Global Optimization (Phase 43)
+  Global Optimization (Phase 44)
+    0:00:17    2646.2      0.00       0.0       0.0                             30.7328
+    0:00:17    2646.2      0.00       0.0       0.0                             30.7328
+    0:00:17    2646.2      0.00       0.0       0.0                             30.7328
+    0:00:17    2646.2      0.00       0.0       0.0                             30.6819
+    0:00:17    2646.2      0.00       0.0       0.0                             30.6819
+    0:00:17    2646.2      0.00       0.0       0.0                             30.6819
+    0:00:17    2646.2      0.00       0.0       0.0                             30.6819
+    0:00:17    2646.2      0.00       0.0       0.0                             30.6819
+    0:00:17    2646.2      0.00       0.0       0.0                             30.6819
+    0:00:17    2646.2      0.00       0.0       0.0                             30.6819
+    0:00:17    2646.2      0.00       0.0       0.0                             30.6819
+    0:00:17    2646.2      0.00       0.0       0.0                             30.6819
+    0:00:17    2646.2      0.00       0.0       0.0                             30.6819
+    0:00:17    2646.2      0.00       0.0       0.0                             30.6819
+    0:00:17    2646.2      0.00       0.0       0.0                             30.6819
+    0:00:17    2646.2      0.00       0.0       0.0                             30.6819
+    0:00:17    2646.2      0.00       0.0       0.0                             30.6819
+    0:00:17    2646.2      0.00       0.0       0.0                             30.6819
+    0:00:17    2646.2      0.00       0.0       0.0                             30.6819
+    0:00:17    2646.2      0.00       0.0       0.0                             30.6819
+    0:00:17    2646.2      0.00       0.0       0.0                             30.6819
+    0:00:17    2646.2      0.00       0.0       0.0                             30.6819
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:17    2646.2      0.00       0.0       0.0                             30.6819
+    0:00:18    2622.5      0.00       0.0       0.0                             24.0289
+    0:00:18    2622.5      0.00       0.0       0.0                             24.0289
+    0:00:18    2622.5      0.00       0.0       0.0                             24.0289
+    0:00:18    2622.5      0.00       0.0       0.0                             24.0289
+    0:00:18    2619.7      0.00       0.0       0.0                             23.8806
+    0:00:18    2619.7      0.00       0.0       0.0                             23.8806
+    0:00:18    2619.7      0.00       0.0       0.0                             23.8806
+    0:00:18    2619.7      0.00       0.0       0.0                             23.8806
+    0:00:18    2619.7      0.00       0.0       0.0                             23.8806
+    0:00:18    2619.7      0.00       0.0       0.0                             23.8806
+    0:00:19    2616.5      0.00       0.0       0.0                             23.6405
+Loading db file '/2tb/home/ghanim/Desktop/depth_compression_hw/common/sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated black box outputs. (PWR-428)
+1
+ungroup -all -flatten
+Warning: Design has no hierarchy.  No cells can be ungrouped. (UID-228)
+0
+current_design top_module
+Current design is 'top_module'.
+{top_module}
+compile_ultra -incremental -timing_high_effort_script
+Warning: The -timing_high_effort_script option is ignored.  (OPT-1342)
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+============================================================================
+| Flow Information                                                         |
+----------------------------------------------------------------------------
+| Flow         | Design Compiler                                           |
+============================================================================
+| Design Information                                      | Value          |
+============================================================================
+| Number of Scenarios                                     | 0              |
+| Leaf Cell Count                                         | 1191           |
+| Number of User Hierarchies                              | 0              |
+| Sequential Cell Count                                   | 241            |
+| Macro Count                                             | 0              |
+| Number of Power Domains                                 | 0              |
+| Design with UPF Data                                    | false          |
+============================================================================
+
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping  (Incremental)
+  ------------------------
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: The library cell 'TIELO_X1M_A12TR40' in the library 'sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'TIEHI_X1M_A12TR40' in the library 'sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c' is not characterized for internal power. (PWR-536)
+Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:02    2616.5      0.00       0.0       0.0                             23.6405
+    0:00:02    2616.5      0.00       0.0       0.0                             23.6405
+
+  Beginning Mapping Optimizations  (Ultra High effort)  (Incremental)
+  -------------------------------
+
+  Beginning Incremental Implementation Selection
+  ----------------------------------------------
+    0:00:03    2708.4      0.00       0.0       0.0                             30.1621
+    0:00:03    2708.4      0.00       0.0       0.0                             30.1621
+    0:00:03    2708.4      0.00       0.0       0.0                             30.1621
+    0:00:03    2708.4      0.00       0.0       0.0                             30.1621
+  Global Optimization (Phase 45)
+  Global Optimization (Phase 46)
+  Global Optimization (Phase 47)
+  Global Optimization (Phase 48)
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:03    2616.5      0.00       0.0       0.0                             23.6405
+    0:00:03    2616.5      0.00       0.0       0.0                             23.6405
+    0:00:03    2616.5      0.00       0.0       0.0                             23.6372
+    0:00:03    2616.5      0.00       0.0       0.0                             23.6372
+    0:00:03    2616.5      0.00       0.0       0.0                             23.6372
+    0:00:03    2616.5      0.00       0.0       0.0                             23.6372
+    0:00:03    2616.5      0.00       0.0       0.0                             23.6372
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:00:03    2616.5      0.00       0.0       0.0                             23.6372
+    0:00:03    2616.5      0.00       0.0       0.0                             23.6372
+    0:00:03    2616.5      0.00       0.0       0.0                             23.6372
+    0:00:03    2616.5      0.00       0.0       0.0                             23.6372
+    0:00:03    2616.5      0.00       0.0       0.0                             23.6372
+    0:00:03    2617.1      0.02       0.0       0.0                             23.6246
+    0:00:03    2617.1      0.02       0.0       0.0                             23.6246
+    0:00:03    2618.4      0.00       0.0       0.0                             23.7133
+    0:00:03    2618.4      0.00       0.0       0.0                             23.7133
+    0:00:03    2618.4      0.00       0.0       0.0                             23.7133
+    0:00:03    2618.4      0.00       0.0       0.0                             23.7133
+    0:00:03    2618.4      0.00       0.0       0.0                             23.7133
+    0:00:03    2618.4      0.00       0.0       0.0                             23.7133
+    0:00:03    2618.4      0.00       0.0       0.0                             23.7133
+    0:00:03    2618.4      0.00       0.0       0.0                             23.7133
+    0:00:03    2618.4      0.00       0.0       0.0                             23.7133
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:03    2618.4      0.00       0.0       0.0                             23.7133
+    0:00:04    2618.4      0.00       0.0       0.0                             23.7133
+    0:00:04    2618.4      0.00       0.0       0.0                             23.7133
+    0:00:04    2618.4      0.00       0.0       0.0                             23.7133
+    0:00:04    2618.4      0.00       0.0       0.0                             23.7133
+    0:00:04    2618.4      0.00       0.0       0.0                             23.7133
+    0:00:04    2618.4      0.00       0.0       0.0                             23.7133
+    0:00:04    2618.4      0.00       0.0       0.0                             23.7133
+    0:00:04    2618.4      0.00       0.0       0.0                             23.7133
+    0:00:04    2618.4      0.00       0.0       0.0                             23.7133
+    0:00:04    2618.4      0.00       0.0       0.0                             23.7133
+    0:00:04    2618.4      0.00       0.0       0.0                             23.7133
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:04    2618.4      0.00       0.0       0.0                             23.7133
+    0:00:04    2618.4      0.00       0.0       0.0                             23.7133
+    0:00:04    2617.1      0.00       0.0       0.0                             23.5294
+    0:00:04    2617.1      0.00       0.0       0.0                             23.5294
+    0:00:04    2617.1      0.00       0.0       0.0                             23.5294
+    0:00:04    2617.1      0.00       0.0       0.0                             23.5294
+Loading db file '/2tb/home/ghanim/Desktop/depth_compression_hw/common/sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated black box outputs. (PWR-428)
+1
+check_design 
+ 
+****************************************
+check_design summary:
+Version:     S-2021.06-SP5
+Date:        Fri Apr  1 22:48:32 2022
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Designs                                                             1
+    Black box (LINT-55)                                             1
+--------------------------------------------------------------------------------
+
+Information: Design 'MN_decoder_line_buffer' does not contain any cells or nets. (LINT-55)
+1
+report_timing
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : top_module
+Version: S-2021.06-SP5
+Date   : Fri Apr  1 22:48:32 2022
+****************************************
+
+Operating Conditions: ss_typical_max_0p81v_125c   Library: sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c
+Wire Load Model Mode: top
+
+  Startpoint: mw_index_reg[6]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: mw_index_reg[7]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  top_module         Small                 sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  mw_index_reg[6]/CK (DFFQ_X3M_A12TR40)                   0.00       0.00 r
+  mw_index_reg[6]/Q (DFFQ_X3M_A12TR40)                    0.11       0.11 r
+  U1433/Y (NOR2B_X4M_A12TR40)                             0.18       0.29 r
+  U1466/Y (AOI22_X0P5M_A12TR40)                           0.09       0.38 f
+  U1467/Y (OAI211_X0P5M_A12TR40)                          0.11       0.48 r
+  U1468/Y (AOI21_X0P5M_A12TR40)                           0.08       0.56 f
+  U1263/Y (AOI31_X1M_A12TR40)                             0.11       0.67 r
+  U1469/Y (AOI222_X2M_A12TR40)                            0.08       0.76 f
+  U1470/Y (AOI32_X1M_A12TR40)                             0.12       0.88 r
+  U1477/Y (AOI22_X1M_A12TR40)                             0.06       0.94 f
+  U1112/Y (NOR2B_X2M_A12TR40)                             0.08       1.02 f
+  U856/Y (INV_X1P7M_A12TR40)                              0.04       1.06 r
+  U1223/Y (OR2_X2M_A12TR40)                               0.06       1.12 r
+  U1505/Y (OR2_X2M_A12TR40)                               0.08       1.20 r
+  U854/Y (NOR2_X1A_A12TR40)                               0.05       1.25 f
+  U853/Y (NAND2_X1A_A12TR40)                              0.06       1.31 r
+  U1690/Y (OAI211_X1M_A12TR40)                            0.06       1.37 f
+  U1215/Y (AND2_X1M_A12TR40)                              0.08       1.45 f
+  U1692/CO (ADDF_X1M_A12TR40)                             0.09       1.53 f
+  U1696/CO (ADDF_X1M_A12TR40)                             0.09       1.63 f
+  U842/Y (AND2_X1M_A12TR40)                               0.07       1.69 f
+  U1451/Y (AND2_X1M_A12TR40)                              0.06       1.76 f
+  U1435/Y (AND2_X1M_A12TR40)                              0.05       1.81 f
+  U1691/Y (XOR2_X0P7M_A12TR40)                            0.07       1.88 r
+  U1214/Y (AO22_X0P7M_A12TR40)                            0.08       1.95 r
+  mw_index_reg[7]/D (DFFQ_X0P5M_A12TR40)                  0.00       1.95 r
+  data arrival time                                                  1.95
+
+  clock clk (rise edge)                                   2.00       2.00
+  clock network delay (ideal)                             0.00       2.00
+  mw_index_reg[7]/CK (DFFQ_X0P5M_A12TR40)                 0.00       2.00 r
+  library setup time                                     -0.05       1.95
+  data required time                                                 1.95
+  --------------------------------------------------------------------------
+  data required time                                                 1.95
+  data arrival time                                                 -1.95
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+1
+report_area
+ 
+****************************************
+Report : area
+Design : top_module
+Version: S-2021.06-SP5
+Date   : Fri Apr  1 22:48:32 2022
+****************************************
+
+Library(s) Used:
+
+    sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c (File: /2tb/home/ghanim/Desktop/depth_compression_hw/common/sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db)
+
+Number of ports:                          144
+Number of nets:                          1364
+Number of cells:                         1192
+Number of combinational cells:            950
+Number of sequential cells:               242
+Number of macros/black boxes:               0
+Number of buf/inv:                        155
+Number of references:                     114
+
+Combinational area:               1461.616806
+Buf/Inv area:                      102.144003
+Noncombinational area:            1155.504026
+Macro/Black Box area:                0.000000
+Net Interconnect area:               0.000000
+
+Total cell area:                  2617.120832
+Total area:                       2617.120832
+1
+write -f verilog -hier -output top_module.vg top_module
+Writing verilog file '/2tb/home/ghanim/Desktop/depth_compression_hw/mn_decoder/top_module.vg'.
+1
+quit
+
+Memory usage for this session 378 Mbytes.
+Memory usage for this session including child processes 378 Mbytes.
+CPU usage for this session 37 seconds ( 0.01 hours ).
+Elapsed time for this session 39 seconds ( 0.01 hours ).
+
+Thank you...

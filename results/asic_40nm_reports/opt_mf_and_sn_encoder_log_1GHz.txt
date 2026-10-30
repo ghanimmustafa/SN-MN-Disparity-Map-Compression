@@ -1,0 +1,797 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+               Version S-2021.06-SP5 for linux64 - Jan 11, 2022 
+
+                    Copyright (c) 1988 - 2022 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+Initializing...
+set clkPer 1.0 
+1.0
+#set top_module
+set search_path [list . ../common]
+. ../common
+read_db sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db
+Loading db file '/eda/synopsys/syn/S-2021.06-SP5/libraries/syn/gtech.db'
+Loading db file '/eda/synopsys/syn/S-2021.06-SP5/libraries/syn/standard.sldb'
+  Loading link library 'gtech'
+Loading db file '/2tb/home/ghanim/Desktop/depth_compression_hw/common/sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db'
+Loaded 0 designs.
+set target_library [list sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db]
+sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db
+set link_library [list * dw_foundation.sldb sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db]
+* dw_foundation.sldb sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db
+define_design_lib USER -path ./work/
+1
+set moduleList [list top_module image_processor_with_MF line_buffer median_filter sorter shift_reg SN_encoder SN_packetizer]
+top_module image_processor_with_MF line_buffer median_filter sorter shift_reg SN_encoder SN_packetizer
+foreach module $moduleList {
+    analyze -format verilog -lib USER $module.v
+}
+Running PRESTO HDLC
+Compiling source file ./top_module.v
+Presto compilation completed successfully.
+Loading db file '/eda/synopsys/syn/S-2021.06-SP5/libraries/syn/dw_foundation.sldb'
+Running PRESTO HDLC
+Compiling source file ./image_processor_with_MF.v
+Presto compilation completed successfully.
+Running PRESTO HDLC
+Compiling source file ./line_buffer.v
+Presto compilation completed successfully.
+Running PRESTO HDLC
+Compiling source file ./median_filter.v
+Warning:  ./median_filter.v:34: the undeclared symbol 'comp1' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./median_filter.v:35: the undeclared symbol 'comp2' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./median_filter.v:36: the undeclared symbol 'comp3' assumed to have the default net type, which is 'wire'. (VER-936)
+Presto compilation completed successfully.
+Running PRESTO HDLC
+Error:  Unable to open file `sorter.v': in search_path {. ../common}. (VER-41)
+*** Presto compilation terminated with 1 errors. ***
+Running PRESTO HDLC
+Compiling source file ./shift_reg.v
+Presto compilation completed successfully.
+Running PRESTO HDLC
+Compiling source file ./SN_encoder.v
+Presto compilation completed successfully.
+Running PRESTO HDLC
+Compiling source file ./SN_packetizer.v
+Presto compilation completed successfully.
+elaborate top_module -lib USER
+Running PRESTO HDLC
+Presto compilation completed successfully. (top_module)
+Elaborated 1 design.
+Current design is now 'top_module'.
+Information: Building the design 'image_processor_with_MF'. (HDL-193)
+Warning:  ./image_processor_with_MF.v:167: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./image_processor_with_MF.v:168: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./image_processor_with_MF.v:193: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./image_processor_with_MF.v:247: signed to unsigned conversion occurs. (VER-318)
+
+Inferred memory devices in process
+	in routine image_processor_with_MF line 92 in file
+		'./image_processor_with_MF.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    do_filter_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|     trigger_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   vsynch_out_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   hsynch_out_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   line_cnt_r_reg    | Flip-flop |  12   |  Y  | N  | N  | N  | N  | N  | N  |
+|  column_cnt_r_reg   | Flip-flop |  12   |  Y  | N  | N  | N  | N  | N  | N  |
+|    valid_out_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|    data_in_r_reg    | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|   data_in_2d_reg    | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|   line_header_reg   | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+| line_header_tmp_reg | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|    line_end_reg     | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|      tmp_1_reg      | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|      tmp_2_reg      | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (image_processor_with_MF)
+Information: Building the design 'SN_encoder'. (HDL-193)
+
+Inferred memory devices in process
+	in routine SN_encoder line 24 in file
+		'./SN_encoder.v'.
+=================================================================================
+|     Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+=================================================================================
+|     valid_out_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+| compressed_flag_r_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|     data_out_reg      | Flip-flop |   9   |  Y  | N  | N  | N  | N  | N  | N  |
+|  left_neighbour_reg   | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+=================================================================================
+Presto compilation completed successfully. (SN_encoder)
+Information: Building the design 'SN_packetizer'. (HDL-193)
+Warning:  ./SN_packetizer.v:136: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./SN_packetizer.v:163: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./SN_packetizer.v:196: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./SN_packetizer.v:212: signed to unsigned conversion occurs. (VER-318)
+
+Statistics for case statements in always block at line 74 in file
+	'./SN_packetizer.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           215            |     no/auto      |
+===============================================
+
+Inferred memory devices in process
+	in routine SN_packetizer line 55 in file
+		'./SN_packetizer.v'.
+=================================================================================
+|     Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+=================================================================================
+|     temp_cnt_reg      | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+|   update_frame_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|    memory_word_reg    | Flip-flop |  128  |  Y  | N  | N  | N  | N  | N  | N  |
+|    shifts_cnt_reg     | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+| valid_memory_word_reg | Flip-flop |  128  |  Y  | N  | N  | N  | N  | N  | N  |
+|    valid_word_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|    last_packet_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|    vsynch_in_r_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|  optimized_case_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      temp_mw_reg      | Flip-flop |  127  |  Y  | N  | N  | N  | N  | N  | N  |
+=================================================================================
+Presto compilation completed successfully. (SN_packetizer)
+Information: Building the design 'line_buffer'. (HDL-193)
+Presto compilation completed successfully. (line_buffer)
+Information: Building the design 'shift_reg'. (HDL-193)
+
+Inferred memory devices in process
+	in routine shift_reg line 34 in file
+		'./shift_reg.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     reg_out_reg     | Flip-flop |  24   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (shift_reg)
+Information: Building the design 'median_filter'. (HDL-193)
+
+Inferred memory devices in process
+	in routine median_filter line 106 in file
+		'./median_filter.v'.
+================================================================================
+|    Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+================================================================================
+|       out_reg        | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+| filter_shift_reg_reg | Flip-flop |  24   |  Y  | N  | N  | N  | N  | N  | N  |
+|      max_1d_reg      | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|     max_1dd_reg      | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|      med_1d_reg      | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|     med_1dd_reg      | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|      min_1d_reg      | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|     min_1dd_reg      | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+================================================================================
+Presto compilation completed successfully. (median_filter)
+Error: Can't find inout port 'rstn' on reference to 'median_filter' in 'image_processor_with_MF'. (LINK-1)
+1
+current_design top_module
+Current design is 'top_module'.
+{top_module}
+link
+
+  Linking design 'top_module'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (7 designs)               /2tb/home/ghanim/Desktop/depth_compression_hw/mf_and_sn_encoder/top_module.db, etc
+  dw_foundation.sldb (library) /eda/synopsys/syn/S-2021.06-SP5/libraries/syn/dw_foundation.sldb
+  sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c (library) /2tb/home/ghanim/Desktop/depth_compression_hw/common/sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db
+
+Error: Can't find inout port 'rstn' on reference to 'median_filter' in 'image_processor_with_MF'. (LINK-1)
+Warning: Unable to resolve reference 'median_filter' in 'image_processor_with_MF'. (LINK-5)
+0
+uniquify
+Information: Uniquified 3 instances of design 'shift_reg'. (OPT-1056)
+Error: Can't find inout port 'rstn' on reference to 'median_filter' in 'image_processor_with_MF'. (LINK-1)
+1
+current_design top_module
+Current design is 'top_module'.
+{top_module}
+set_max_area 0
+1
+set_wire_load_model -name "W40000"
+Error: Wire load 'W40000' not found. (UID-40)
+0
+set_wire_load_mode top
+1
+create_clock -name clk -period $clkPer clk
+1
+#optimize_registers 
+#balance_registers starMult
+#-sync_trans multiclass
+#compile_ultra -no_autoungroup -timing_high_effort_script
+#ungroup -all -flatten
+#current_design top_module
+compile_ultra -incremental -timing_high_effort_script
+Warning: The -timing_high_effort_script option is ignored.  (OPT-1342)
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | S-2021.06-DWBB_202106.5 |     *     |
+| Licensed DW Building Blocks        | S-2021.06-DWBB_202106.5 |     *     |
+============================================================================
+
+============================================================================
+| Flow Information                                                         |
+----------------------------------------------------------------------------
+| Flow         | Design Compiler                                           |
+============================================================================
+| Design Information                                      | Value          |
+============================================================================
+| Number of Scenarios                                     | 0              |
+| Leaf Cell Count                                         | 1115           |
+| Number of User Hierarchies                              | 6              |
+| Sequential Cell Count                                   | 576            |
+| Macro Count                                             | 0              |
+| Number of Power Domains                                 | 0              |
+| Design with UPF Data                                    | false          |
+============================================================================
+
+Information: There are 86 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+Warning: Library cell 'CMPR42_X1M_A12TR40' has a valid function-id,
+	but it has also been annotated with the user_function_class
+	attribute.  Resolving this conflict by ignoring the
+	user_function_class attribute for this library cell. (OPT-200)
+Warning: Library cell 'CMPR42_X1P4M_A12TR40' has a valid function-id,
+	but it has also been annotated with the user_function_class
+	attribute.  Resolving this conflict by ignoring the
+	user_function_class attribute for this library cell. (OPT-200)
+Warning: Library cell 'CMPR42_X2M_A12TR40' has a valid function-id,
+	but it has also been annotated with the user_function_class
+	attribute.  Resolving this conflict by ignoring the
+	user_function_class attribute for this library cell. (OPT-200)
+Warning: Library cell 'ADDFCIN_X1M_A12TR40' has a valid function-id,
+	but it has also been annotated with the user_function_class
+	attribute.  Resolving this conflict by ignoring the
+	user_function_class attribute for this library cell. (OPT-200)
+Warning: Library cell 'ADDFCIN_X1P4M_A12TR40' has a valid function-id,
+	but it has also been annotated with the user_function_class
+	attribute.  Resolving this conflict by ignoring the
+	user_function_class attribute for this library cell. (OPT-200)
+Warning: Library cell 'ADDFCIN_X2M_A12TR40' has a valid function-id,
+	but it has also been annotated with the user_function_class
+	attribute.  Resolving this conflict by ignoring the
+	user_function_class attribute for this library cell. (OPT-200)
+Loaded alib file './alib-52/sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db.alib'
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping  (Incremental)
+  ------------------------
+  Processing 'SN_packetizer'
+Information: Added key list 'DesignWare' to design 'SN_packetizer'. (DDB-72)
+Information: The register 'temp_mw_reg[119]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[118]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[117]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[116]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[115]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[114]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[113]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[112]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[111]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[110]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[109]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[108]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[107]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[106]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[105]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[104]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[103]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[102]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[101]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[100]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[99]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[98]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[97]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[96]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[95]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[94]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[93]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[92]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[91]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[90]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[89]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[88]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[87]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[86]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[85]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[84]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[83]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[82]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[81]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[80]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[79]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[78]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[77]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[76]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[75]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[74]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[73]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[72]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[71]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[70]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[69]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[68]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[67]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[66]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[65]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[64]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[63]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[62]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[61]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[60]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[59]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[58]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[57]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[56]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[55]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[54]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[53]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[52]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[51]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[50]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[49]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[48]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[47]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[46]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[45]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[44]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[43]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[42]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[41]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[40]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[39]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[38]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[37]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[36]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[35]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[34]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[33]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[32]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[31]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[30]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[29]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[28]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[27]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[26]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[25]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[24]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[23]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[22]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[21]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[20]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[19]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[18]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[17]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[16]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[14]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[13]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[12]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[11]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[9]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[8]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[1]' is a constant and will be removed. (OPT-1206)
+  Processing 'SN_encoder'
+Information: Added key list 'DesignWare' to design 'SN_encoder'. (DDB-72)
+  Processing 'shift_reg_0'
+  Processing 'image_processor_with_MF'
+Error: Can't find inout port 'rstn' on reference to 'median_filter' in 'image_processor_with_MF'. (LINK-1)
+Warning: Unable to resolve reference 'median_filter' in 'image_processor_with_MF'. (LINK-5)
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: The library cell 'TIELO_X1M_A12TR40' in the library 'sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'TIEHI_X1M_A12TR40' in the library 'sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c' is not characterized for internal power. (PWR-536)
+Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
+  Mapping 'SN_packetizer_DW_cmp_0'
+  Mapping 'SN_packetizer_DW_cmp_1'
+  Mapping 'SN_packetizer_DW01_inc_0'
+  Mapping 'SN_packetizer_DW01_add_0'
+  Mapping 'DW_rightsh'
+  Mapping 'image_processor_with_MF_DW_cmp_0'
+  Mapping 'image_processor_with_MF_DW_cmp_1'
+  Mapping 'image_processor_with_MF_DW_cmp_2'
+  Mapping 'image_processor_with_MF_DW_cmp_3'
+  Mapping 'image_processor_with_MF_DW01_inc_0'
+  Mapping 'image_processor_with_MF_DW_cmp_4'
+  Mapping 'image_processor_with_MF_DW01_inc_1'
+  Mapping 'image_processor_with_MF_DW_cmp_5'
+  Mapping 'image_processor_with_MF_DW01_dec_0'
+  Mapping 'SN_packetizer_DP_OP_125_122_7253_0'
+  Processing 'mselector_n2_m8'
+  Mapping 'SN_packetizer_DP_OP_118_125_5101_0'
+  Mapping 'SN_packetizer_DP_OP_117_124_5101_0'
+  Mapping 'SN_packetizer_DP_OP_116_123_7638_0'
+  Processing 'mselector_n3_m8'
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:10    6406.3     10.60    2621.9   54080.0                            103.3421
+    0:00:10    6406.3     10.60    2621.9   54080.0                            103.3421
+
+  Beginning Mapping Optimizations  (Ultra High effort)  (Incremental)
+  -------------------------------
+Information: Added key list 'DesignWare' to design 'image_processor_with_MF'. (DDB-72)
+
+  Beginning Incremental Implementation Selection
+  ----------------------------------------------
+  Mapping 'SN_packetizer_DP_OP_125_122_7253_1'
+  Selecting implementations
+  Mapping 'image_processor_with_MF_DW01_dec_2'
+  Mapping 'image_processor_with_MF_DW01_dec_3'
+  Mapping 'image_processor_with_MF_DW01_inc_4'
+  Mapping 'image_processor_with_MF_DW01_inc_5'
+  Mapping 'image_processor_with_MF_DW01_inc_6'
+  Mapping 'image_processor_with_MF_DW01_inc_7'
+    0:00:14    6736.7     13.30    2411.8   30688.3                            118.5688
+    0:00:14    6740.5     13.29    2411.4   30688.3                            118.7363
+    0:00:14    6740.5     13.29    2411.4   30688.3                            118.7363
+    0:00:14    6739.3     13.29    2411.1   30688.3                            118.7166
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:17    6871.1      0.97     242.6     170.9                            118.5793
+    0:00:17    6871.1      0.97     242.6     170.9                            118.5793
+    0:00:18    6876.8      0.97     238.5     103.2                            122.0431
+    0:00:18    6876.8      0.97     238.5     103.2                            122.0431
+    0:00:19    7155.8      0.65     164.8      52.5                            131.9736
+    0:00:19    7155.8      0.65     164.8      52.5                            131.9736
+    0:00:34    8025.3      0.38      86.0     127.7                            164.4789
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:00:35    8025.3      0.38      86.0     127.7                            164.4789
+    0:00:55    8989.9      0.05       4.1     211.6                            203.2032
+    0:00:55    8989.9      0.05       4.1     211.6                            203.2032
+    0:00:59    9129.8      0.00       0.0     235.1                            208.3098
+    0:00:59    9129.8      0.00       0.0     235.1                            208.3098
+    0:01:00    9084.1      0.00       0.0     235.1                            203.8281
+
+
+  Beginning Design Rule Fixing  (max_transition)  (max_capacitance)
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:01:00    9084.1      0.00       0.0     235.1                            203.8281
+    0:01:00    9081.6      0.00       0.0       0.0                            203.6994
+    0:01:01    8898.3      0.00       0.0       0.0                            196.4490
+    0:01:01    8898.3      0.00       0.0       0.0                            196.4490
+    0:01:01    8898.3      0.00       0.0       0.0                            196.4490
+    0:01:01    8898.3      0.00       0.0       0.0                            196.4490
+    0:01:01    8898.3      0.00       0.0       0.0                            196.4490
+    0:01:01    8898.3      0.00       0.0       0.0                            196.4490
+    0:01:01    8898.3      0.00       0.0       0.0                            196.4490
+    0:01:01    8898.3      0.00       0.0       0.0                            196.4490
+    0:01:01    8898.3      0.00       0.0       0.0                            196.4490
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:01:01    8898.3      0.00       0.0       0.0                            196.4490
+    0:01:02    8842.2      0.00       0.0       0.0                            194.1819
+    0:01:02    8806.4      0.00       0.0       0.0                            193.0137
+    0:01:02    8806.4      0.00       0.0       0.0                            193.0137
+    0:01:02    8806.4      0.00       0.0       0.0                            193.0137
+    0:01:02    8806.4      0.00       0.0       0.0                            193.0137
+    0:01:02    8806.4      0.00       0.0       0.0                            193.0137
+    0:01:02    8806.4      0.00       0.0       0.0                            193.0137
+    0:01:02    8806.4      0.00       0.0       0.0                            193.0137
+    0:01:02    8806.4      0.00       0.0       0.0                            193.0137
+    0:01:02    8806.4      0.00       0.0       0.0                            193.0137
+    0:01:02    8806.4      0.00       0.0       0.0                            193.0137
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:01:02    8806.4      0.00       0.0       0.0                            193.0137
+    0:01:03    8802.9      0.00       0.0       0.0                            192.8778
+    0:01:09    7207.9      0.00       0.0       0.0                            109.6691
+    0:01:09    7207.9      0.00       0.0       0.0                            109.6691
+    0:01:09    7207.9      0.00       0.0       0.0                            109.6691
+    0:01:09    7207.9      0.00       0.0       0.0                            109.6691
+    0:01:11    7037.4      0.00       0.0       0.0                            101.9225
+Loading db file '/2tb/home/ghanim/Desktop/depth_compression_hw/common/sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated black box outputs. (PWR-428)
+1
+check_design 
+Error: Can't find inout port 'rstn' on reference to 'median_filter' in 'image_processor_with_MF'. (LINK-1)
+Warning: Unable to resolve reference 'median_filter' in 'image_processor_with_MF'. (LINK-5)
+ 
+****************************************
+check_design summary:
+Version:     S-2021.06-SP5
+Date:        Sat May 28 01:17:04 2022
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                     13
+    Multiply driven inputs (LINT-6)                                 2
+    Unconnected ports (LINT-28)                                    10
+    Feedthrough (LINT-29)                                           1
+
+Cells                                                               2
+    Nets connected to multiple pins on same cell (LINT-33)          2
+
+Designs                                                             1
+    Black box (LINT-55)                                             1
+
+Tristate                                                           72
+    A tristate bus has a non tri-state driver (LINT-34)            72
+--------------------------------------------------------------------------------
+
+Warning: In design 'image_processor_with_MF', input port 'clk' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'image_processor_with_MF', input port 'rstn' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'top_module', port 'vsynch_in' is not connected to any nets. (LINT-28)
+Warning: In design 'image_processor_with_MF', port 'vsynch_in' is not connected to any nets. (LINT-28)
+Warning: In design 'SN_packetizer_DP_OP_125_122_7253_0', port 'I3[7]' is not connected to any nets. (LINT-28)
+Warning: In design 'SN_packetizer_DP_OP_125_122_7253_0', port 'I3[6]' is not connected to any nets. (LINT-28)
+Warning: In design 'SN_packetizer_DP_OP_125_122_7253_0', port 'I3[5]' is not connected to any nets. (LINT-28)
+Warning: In design 'SN_packetizer_DP_OP_125_122_7253_0', port 'I3[4]' is not connected to any nets. (LINT-28)
+Warning: In design 'SN_packetizer_DP_OP_125_122_7253_0', port 'I3[2]' is not connected to any nets. (LINT-28)
+Warning: In design 'SN_packetizer_DP_OP_125_122_7253_0', port 'I3[1]' is not connected to any nets. (LINT-28)
+Warning: In design 'SN_packetizer_DP_OP_125_122_7253_0', port 'O3[1]' is not connected to any nets. (LINT-28)
+Warning: In design 'SN_packetizer_DP_OP_125_122_7253_0', port 'O3[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'SN_packetizer_DP_OP_125_122_7253_0', input port 'I1[0]' is connected directly to output port 'O1[0]'. (LINT-29)
+Warning: In design 'SN_packetizer', the same net is connected to more than one pin on submodule 'DP_OP_125_122_7253'. (LINT-33)
+   Net 'n2301' is connected to pins 'I3[7]', 'I3[6]'', 'I3[5]', 'I3[4]', 'I3[2]', 'I3[1]'.
+Warning: In design 'SN_packetizer', the same net is connected to more than one pin on submodule 'DP_OP_125_122_7253'. (LINT-33)
+   Net 'n60' is connected to pins 'I3[0]', 'I4''.
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w23[0]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[0]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w23[1]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[1]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w23[2]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[2]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w23[3]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[3]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w23[4]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[4]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w23[5]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[5]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w23[6]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[6]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w23[7]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[7]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w22[0]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[8]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w22[1]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[9]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w22[2]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[10]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w22[3]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[11]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w22[4]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[12]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w22[5]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[13]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w22[6]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[14]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w22[7]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[15]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w21[0]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[16]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w21[1]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[17]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w21[2]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[18]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w21[3]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[19]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w21[4]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[20]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w21[5]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[21]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w21[6]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[22]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w21[7]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[23]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w13[0]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[0]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w13[1]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[1]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w13[2]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[2]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w13[3]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[3]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w13[4]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[4]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w13[5]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[5]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w13[6]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[6]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w13[7]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[7]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w12[0]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[8]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w12[1]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[9]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w12[2]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[10]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w12[3]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[11]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w12[4]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[12]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w12[5]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[13]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w12[6]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[14]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w12[7]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[15]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w11[0]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[16]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w11[1]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[17]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w11[2]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[18]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w11[3]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[19]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w11[4]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[20]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w11[5]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[21]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w11[6]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[22]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w11[7]' has non three-state driver 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[23]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w33[0]' has non three-state driver 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[0]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w33[1]' has non three-state driver 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[1]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w33[2]' has non three-state driver 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[2]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w33[3]' has non three-state driver 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[3]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w33[4]' has non three-state driver 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[4]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w33[5]' has non three-state driver 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[5]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w33[6]' has non three-state driver 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[6]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w33[7]' has non three-state driver 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[7]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w32[0]' has non three-state driver 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[8]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w32[1]' has non three-state driver 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[9]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w32[2]' has non three-state driver 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[10]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w32[3]' has non three-state driver 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[11]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w32[4]' has non three-state driver 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[12]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w32[5]' has non three-state driver 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[13]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w32[6]' has non three-state driver 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[14]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w32[7]' has non three-state driver 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[15]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w31[0]' has non three-state driver 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[16]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w31[1]' has non three-state driver 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[17]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w31[2]' has non three-state driver 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[18]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w31[3]' has non three-state driver 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[19]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w31[4]' has non three-state driver 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[20]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w31[5]' has non three-state driver 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[21]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w31[6]' has non three-state driver 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[22]/Q'. (LINT-34)
+Warning: In design 'top_module', three-state bus 'image_processor_with_MF_i/w31[7]' has non three-state driver 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[23]/Q'. (LINT-34)
+Information: Design 'line_buffer' does not contain any cells or nets. (LINT-55)
+1
+report_timing
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : top_module
+Version: S-2021.06-SP5
+Date   : Sat May 28 01:17:04 2022
+****************************************
+
+Operating Conditions: ss_typical_max_0p81v_125c   Library: sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c
+Wire Load Model Mode: top
+
+  Startpoint: image_processor_with_MF_i/column_cnt_r_reg[11]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: image_processor_with_MF_i/tmp_1_reg[7]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  top_module         Small                 sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  image_processor_with_MF_i/column_cnt_r_reg[11]/CK (DFFQ_X1M_A12TR40)
+                                                          0.00       0.00 r
+  image_processor_with_MF_i/column_cnt_r_reg[11]/Q (DFFQ_X1M_A12TR40)
+                                                          0.17       0.17 r
+  image_processor_with_MF_i/U39/Y (NOR3_X2A_A12TR40)      0.05       0.22 f
+  image_processor_with_MF_i/U20/Y (NAND4XXXB_X2M_A12TR40)
+                                                          0.07       0.29 r
+  image_processor_with_MF_i/U19/Y (NOR3_X2A_A12TR40)      0.05       0.34 f
+  image_processor_with_MF_i/U18/Y (INV_X1P7B_A12TR40)     0.04       0.38 r
+  image_processor_with_MF_i/U33/Y (OA21A1OI2_X4M_A12TR40)
+                                                          0.03       0.41 f
+  image_processor_with_MF_i/U30/Y (NOR3BB_X4M_A12TR40)
+                                                          0.05       0.46 r
+  image_processor_with_MF_i/U16/Y (NOR2_X3A_A12TR40)      0.02       0.48 f
+  image_processor_with_MF_i/U34/Y (AOI21_X1M_A12TR40)     0.28       0.77 r
+  image_processor_with_MF_i/U117/Y (OAI22_X0P5M_A12TR40)
+                                                          0.16       0.92 f
+  image_processor_with_MF_i/tmp_1_reg[7]/D (DFFQ_X0P5M_A12TR40)
+                                                          0.00       0.92 f
+  data arrival time                                                  0.92
+
+  clock clk (rise edge)                                   1.00       1.00
+  clock network delay (ideal)                             0.00       1.00
+  image_processor_with_MF_i/tmp_1_reg[7]/CK (DFFQ_X0P5M_A12TR40)
+                                                          0.00       1.00 r
+  library setup time                                     -0.08       0.92
+  data required time                                                 0.92
+  --------------------------------------------------------------------------
+  data required time                                                 0.92
+  data arrival time                                                 -0.92
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+1
+report_area
+ 
+****************************************
+Report : area
+Design : top_module
+Version: S-2021.06-SP5
+Date   : Sat May 28 01:17:04 2022
+****************************************
+
+Library(s) Used:
+
+    sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c (File: /2tb/home/ghanim/Desktop/depth_compression_hw/common/sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db)
+
+Number of ports:                          616
+Number of nets:                          3759
+Number of cells:                         3284
+Number of combinational cells:           2814
+Number of sequential cells:               460
+Number of macros/black boxes:               0
+Number of buf/inv:                        535
+Number of references:                       4
+
+Combinational area:               4819.281613
+Buf/Inv area:                      466.670410
+Noncombinational area:            2218.120845
+Macro/Black Box area:                0.000000
+Net Interconnect area:               0.000000
+
+Total cell area:                  7037.402459
+Total area:                       7037.402459
+
+Information: This design contains black box (unknown) components. (RPT-8)
+1
+write -f verilog -hier -output top_module.vg top_module
+Writing verilog file '/2tb/home/ghanim/Desktop/depth_compression_hw/mf_and_sn_encoder/top_module.vg'.
+Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
+Warning: Verilog writer has added 2 nets to module SN_packetizer using SYNOPSYS_UNCONNECTED_ as prefix.  Please use the change_names command to make the correct changes before invoking the verilog writer.  (VO-11)
+1
+quit
+
+Memory usage for this session 383 Mbytes.
+Memory usage for this session including child processes 383 Mbytes.
+CPU usage for this session 79 seconds ( 0.02 hours ).
+Elapsed time for this session 80 seconds ( 0.02 hours ).
+
+Thank you...

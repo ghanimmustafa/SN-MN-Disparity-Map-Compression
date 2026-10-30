@@ -1,0 +1,975 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+               Version S-2021.06-SP5 for linux64 - Jan 11, 2022 
+
+                    Copyright (c) 1988 - 2022 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+Initializing...
+set clkPer 1.0 
+1.0
+#set top_module
+set search_path [list . ../common]
+. ../common
+read_db sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db
+Loading db file '/eda/synopsys/syn/S-2021.06-SP5/libraries/syn/gtech.db'
+Loading db file '/eda/synopsys/syn/S-2021.06-SP5/libraries/syn/standard.sldb'
+  Loading link library 'gtech'
+Loading db file '/2tb/home/ghanim/Desktop/depth_compression_hw/common/sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db'
+Loaded 0 designs.
+set target_library [list sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db]
+sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db
+set link_library [list * dw_foundation.sldb sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db]
+* dw_foundation.sldb sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db
+define_design_lib USER -path ./work/
+1
+set moduleList [list top_module image_processor_with_MF single_port_RAM median_filter sorter shift_reg MN_encoder_v1 MN_packetizer_v1]
+top_module image_processor_with_MF single_port_RAM median_filter sorter shift_reg MN_encoder_v1 MN_packetizer_v1
+foreach module $moduleList {
+    analyze -format verilog -lib USER $module.v
+}
+Running PRESTO HDLC
+Compiling source file ./top_module.v
+Presto compilation completed successfully.
+Loading db file '/eda/synopsys/syn/S-2021.06-SP5/libraries/syn/dw_foundation.sldb'
+Running PRESTO HDLC
+Compiling source file ./image_processor_with_MF.v
+Presto compilation completed successfully.
+Running PRESTO HDLC
+Compiling source file ./single_port_RAM.v
+Presto compilation completed successfully.
+Running PRESTO HDLC
+Compiling source file ./median_filter.v
+Warning:  ./median_filter.v:34: the undeclared symbol 'comp1' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./median_filter.v:35: the undeclared symbol 'comp2' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./median_filter.v:36: the undeclared symbol 'comp3' assumed to have the default net type, which is 'wire'. (VER-936)
+Presto compilation completed successfully.
+Running PRESTO HDLC
+Error:  Unable to open file `sorter.v': in search_path {. ../common}. (VER-41)
+*** Presto compilation terminated with 1 errors. ***
+Running PRESTO HDLC
+Compiling source file ./shift_reg.v
+Presto compilation completed successfully.
+Running PRESTO HDLC
+Compiling source file ./MN_encoder_v1.v
+Presto compilation completed successfully.
+Running PRESTO HDLC
+Compiling source file ./MN_packetizer_v1.v
+Presto compilation completed successfully.
+elaborate top_module -lib USER
+Running PRESTO HDLC
+Presto compilation completed successfully. (top_module)
+Elaborated 1 design.
+Current design is now 'top_module'.
+Information: Building the design 'image_processor_with_MF'. (HDL-193)
+Warning:  ./image_processor_with_MF.v:167: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./image_processor_with_MF.v:168: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./image_processor_with_MF.v:193: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./image_processor_with_MF.v:247: signed to unsigned conversion occurs. (VER-318)
+
+Inferred memory devices in process
+	in routine image_processor_with_MF line 92 in file
+		'./image_processor_with_MF.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    do_filter_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|     trigger_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   vsynch_out_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   hsynch_out_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   line_cnt_r_reg    | Flip-flop |  12   |  Y  | N  | N  | N  | N  | N  | N  |
+|  column_cnt_r_reg   | Flip-flop |  12   |  Y  | N  | N  | N  | N  | N  | N  |
+|    valid_out_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|    data_in_r_reg    | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|   data_in_2d_reg    | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|   line_header_reg   | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+| line_header_tmp_reg | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|    line_end_reg     | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|      tmp_1_reg      | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|      tmp_2_reg      | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (image_processor_with_MF)
+Information: Building the design 'MN_encoder_v1'. (HDL-193)
+Warning:  ./MN_encoder_v1.v:123: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./MN_encoder_v1.v:140: signed to unsigned conversion occurs. (VER-318)
+
+Inferred memory devices in process
+	in routine MN_encoder_v1 line 50 in file
+		'./MN_encoder_v1.v'.
+==================================================================================
+|     Register Name      |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+==================================================================================
+|    top_right_n_reg     | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       top_n_reg        | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|     valid_out_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|  compressed_flag_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      data_out_reg      | Flip-flop |  10   |  Y  | N  | N  | N  | N  | N  | N  |
+|       left_n_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|     data_in_1d_reg     | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|     data_in_2d_reg     | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|     data_in_3d_reg     | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|      d1_flag_reg       | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      d2_flag_reg       | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+| second_line_detect_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      valid_1d_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      valid_2d_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      valid_3d_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|        adr_reg         | Flip-flop |  12   |  Y  | N  | N  | N  | N  | N  | N  |
+|     temp_flag_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      temp_out_reg      | Flip-flop |  10   |  Y  | N  | N  | N  | N  | N  | N  |
+==================================================================================
+Presto compilation completed successfully. (MN_encoder_v1)
+Information: Building the design 'MN_packetizer_v1'. (HDL-193)
+Warning:  ./MN_packetizer_v1.v:172: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./MN_packetizer_v1.v:183: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./MN_packetizer_v1.v:210: signed to unsigned conversion occurs. (VER-318)
+Warning:  ./MN_packetizer_v1.v:255: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./MN_packetizer_v1.v:271: signed to unsigned conversion occurs. (VER-318)
+
+Statistics for case statements in always block at line 100 in file
+	'./MN_packetizer_v1.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           274            |     no/auto      |
+===============================================
+
+Inferred memory devices in process
+	in routine MN_packetizer_v1 line 76 in file
+		'./MN_packetizer_v1.v'.
+=================================================================================
+|     Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+=================================================================================
+|   vsynch_in_2d_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   vsynch_in_3d_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|    memory_word_reg    | Flip-flop |  128  |  Y  | N  | N  | N  | N  | N  | N  |
+|    shifts_cnt_reg     | Flip-flop |   9   |  Y  | N  | N  | N  | N  | N  | N  |
+| valid_memory_word_reg | Flip-flop |  128  |  Y  | N  | N  | N  | N  | N  | N  |
+|    valid_word_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|    last_packet_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|    vsynch_in_r_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|  optimized_case_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      temp_mw_reg      | Flip-flop |  126  |  Y  | N  | N  | N  | N  | N  | N  |
+|     temp_cnt_reg      | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+|   update_frame_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|    MSB_header_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   header_value_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   vsynch_in_1d_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+=================================================================================
+Presto compilation completed successfully. (MN_packetizer_v1)
+Information: Building the design 'single_port_RAM'. (HDL-193)
+Presto compilation completed successfully. (single_port_RAM)
+Information: Building the design 'shift_reg'. (HDL-193)
+
+Inferred memory devices in process
+	in routine shift_reg line 36 in file
+		'./shift_reg.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     reg_out_reg     | Flip-flop |  24   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (shift_reg)
+Information: Building the design 'median_filter'. (HDL-193)
+
+Inferred memory devices in process
+	in routine median_filter line 106 in file
+		'./median_filter.v'.
+================================================================================
+|    Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+================================================================================
+|       out_reg        | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+| filter_shift_reg_reg | Flip-flop |  24   |  Y  | N  | N  | N  | N  | N  | N  |
+|      max_1d_reg      | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|     max_1dd_reg      | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|      med_1d_reg      | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|     med_1dd_reg      | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|      min_1d_reg      | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|     min_1dd_reg      | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+================================================================================
+Presto compilation completed successfully. (median_filter)
+Information: Building the design 'sorter'. (HDL-193)
+Presto compilation completed successfully. (sorter)
+1
+current_design top_module
+Current design is 'top_module'.
+{top_module}
+link
+
+  Linking design 'top_module'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (8 designs)               /2tb/home/ghanim/Desktop/depth_compression_hw/mf_and_mn_encoder/top_module.db, etc
+  dw_foundation.sldb (library) /eda/synopsys/syn/S-2021.06-SP5/libraries/syn/dw_foundation.sldb
+  sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c (library) /2tb/home/ghanim/Desktop/depth_compression_hw/common/sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db
+
+1
+uniquify
+Information: Uniquified 3 instances of design 'shift_reg'. (OPT-1056)
+Information: Uniquified 5 instances of design 'sorter'. (OPT-1056)
+1
+current_design top_module
+Current design is 'top_module'.
+{top_module}
+set_max_area 0
+1
+#set_wire_load_model -name "W40000"
+set_wire_load_mode top
+1
+create_clock -name clk -period $clkPer clk
+1
+#optimize_registers 
+#balance_registers starMult
+#-sync_trans multiclass
+compile_ultra -no_autoungroup -timing_high_effort_script
+Warning: The -timing_high_effort_script option is ignored.  (OPT-1342)
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | S-2021.06-DWBB_202106.5 |     *     |
+| Licensed DW Building Blocks        | S-2021.06-DWBB_202106.5 |     *     |
+============================================================================
+
+============================================================================
+| Flow Information                                                         |
+----------------------------------------------------------------------------
+| Flow         | Design Compiler WLM                                       |
+============================================================================
+| Design Information                                      | Value          |
+============================================================================
+| Number of Scenarios                                     | 0              |
+| Leaf Cell Count                                         | 1614           |
+| Number of User Hierarchies                              | 12             |
+| Sequential Cell Count                                   | 731            |
+| Macro Count                                             | 0              |
+| Number of Power Domains                                 | 0              |
+| Design with UPF Data                                    | false          |
+============================================================================
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+
+Information: There are 62 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+  Simplifying Design 'top_module'
+Information: The register 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[0]' will be removed. (OPT-1207)
+Information: The register 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[1]' will be removed. (OPT-1207)
+Information: The register 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[2]' will be removed. (OPT-1207)
+Information: The register 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[3]' will be removed. (OPT-1207)
+Information: The register 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[4]' will be removed. (OPT-1207)
+Information: The register 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[5]' will be removed. (OPT-1207)
+Information: The register 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[6]' will be removed. (OPT-1207)
+Information: The register 'image_processor_with_MF_i/shift_reg_line0/reg_out_reg[7]' will be removed. (OPT-1207)
+Information: The register 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[0]' will be removed. (OPT-1207)
+Information: The register 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[1]' will be removed. (OPT-1207)
+Information: The register 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[2]' will be removed. (OPT-1207)
+Information: The register 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[3]' will be removed. (OPT-1207)
+Information: The register 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[4]' will be removed. (OPT-1207)
+Information: The register 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[5]' will be removed. (OPT-1207)
+Information: The register 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[6]' will be removed. (OPT-1207)
+Information: The register 'image_processor_with_MF_i/shift_reg_line1/reg_out_reg[7]' will be removed. (OPT-1207)
+Information: The register 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[0]' will be removed. (OPT-1207)
+Information: The register 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[1]' will be removed. (OPT-1207)
+Information: The register 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[2]' will be removed. (OPT-1207)
+Information: The register 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[3]' will be removed. (OPT-1207)
+Information: The register 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[4]' will be removed. (OPT-1207)
+Information: The register 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[5]' will be removed. (OPT-1207)
+Information: The register 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[6]' will be removed. (OPT-1207)
+Information: The register 'image_processor_with_MF_i/shift_reg_current_line/reg_out_reg[7]' will be removed. (OPT-1207)
+
+Loaded alib file './alib-52/sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db.alib'
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'MN_packetizer_v1'
+Information: Added key list 'DesignWare' to design 'MN_packetizer_v1'. (DDB-72)
+Information: The register 'temp_mw_reg[100]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[99]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[98]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[97]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[96]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[95]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[94]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[93]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[92]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[91]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[90]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[89]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[88]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[87]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[86]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[85]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[84]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[83]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[82]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[81]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[80]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[79]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[78]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[77]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[76]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[75]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[74]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[73]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[72]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[71]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[70]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[69]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[68]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[67]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[66]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[65]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[64]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[63]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[62]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[61]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[60]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[59]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[58]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[57]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[56]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[55]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[54]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[53]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[52]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[51]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[50]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[49]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[48]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[47]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[46]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[45]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[44]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[43]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[42]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[41]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[40]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[39]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[118]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[37]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[36]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[35]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[34]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[33]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[32]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[31]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[30]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[29]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[28]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[27]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[26]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[25]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[24]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[23]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[22]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[21]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[20]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[19]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[18]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[17]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[16]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[14]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[13]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[12]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[11]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[9]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[8]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[38]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[116]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[115]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[114]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[113]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[112]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[111]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[110]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[109]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[108]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[107]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[106]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[105]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[104]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[103]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[102]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[101]' is a constant and will be removed. (OPT-1206)
+Information: The register 'temp_mw_reg[117]' is a constant and will be removed. (OPT-1206)
+ Implement Synthetic for 'MN_packetizer_v1'.
+  Processing 'image_processor_with_MF'
+ Implement Synthetic for 'image_processor_with_MF'.
+Information: Added key list 'DesignWare' to design 'image_processor_with_MF'. (DDB-72)
+  Processing 'MN_encoder_v1'
+Information: Added key list 'DesignWare' to design 'MN_encoder_v1'. (DDB-72)
+ Implement Synthetic for 'MN_encoder_v1'.
+  Processing 'median_filter'
+  Processing 'top_module'
+  Processing 'sorter_4'
+ Implement Synthetic for 'sorter_4'.
+Information: Added key list 'DesignWare' to design 'sorter_4'. (DDB-72)
+  Processing 'shift_reg_0'
+Information: The register 'reg_out_reg[8]' will be removed. (OPT-1207)
+Information: The register 'reg_out_reg[9]' will be removed. (OPT-1207)
+Information: The register 'reg_out_reg[10]' will be removed. (OPT-1207)
+Information: The register 'reg_out_reg[11]' will be removed. (OPT-1207)
+Information: The register 'reg_out_reg[12]' will be removed. (OPT-1207)
+Information: The register 'reg_out_reg[13]' will be removed. (OPT-1207)
+Information: The register 'reg_out_reg[14]' will be removed. (OPT-1207)
+Information: The register 'reg_out_reg[15]' will be removed. (OPT-1207)
+  Processing 'sorter_0'
+ Implement Synthetic for 'sorter_0'.
+Information: Added key list 'DesignWare' to design 'sorter_0'. (DDB-72)
+  Processing 'sorter_1'
+ Implement Synthetic for 'sorter_1'.
+Information: Added key list 'DesignWare' to design 'sorter_1'. (DDB-72)
+  Processing 'sorter_3'
+ Implement Synthetic for 'sorter_3'.
+Information: Added key list 'DesignWare' to design 'sorter_3'. (DDB-72)
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: The library cell 'TIELO_X1M_A12TR40' in the library 'sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'TIEHI_X1M_A12TR40' in the library 'sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c' is not characterized for internal power. (PWR-536)
+Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
+Information: Complementing port 'update_frame' in design 'MN_packetizer_v1'.
+	 The new name of the port is 'update_frame_BAR'. (OPT-319)
+Information: The register 'MN_encoder_i/temp_out_reg[1]' is a constant and will be removed. (OPT-1206)
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+Information: The register 'MN_packetizer_i/header_value_reg' will be removed. (OPT-1207)
+  Mapping Optimization (Phase 1)
+  Mapping Optimization (Phase 2)
+  Mapping Optimization (Phase 3)
+Information: The register 'MN_encoder_i/temp_out_reg[0]' is a constant and will be removed. (OPT-1206)
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:26   25748.6      0.17       1.1       0.0                            789.2532
+    0:00:26   25619.3      0.25      31.3      42.5                            785.3438
+
+  Beginning Constant Register Removal
+  -----------------------------------
+Information: The register 'MN_packetizer_i/MSB_header_reg' is a constant and will be removed. (OPT-1206)
+Information: The register 'MN_packetizer_i/shifts_cnt_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'MN_packetizer_i/temp_cnt_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'MN_packetizer_i/temp_mw_reg[119]' is a constant and will be removed. (OPT-1206)
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+  Global Optimization (Phase 31)
+
+  Beginning Isolate Ports
+  -----------------------
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:00:30    8841.2      0.35       5.2       0.0                            161.7708
+    0:00:38    9903.2      0.05       1.1       0.0                            209.2856
+    0:00:38    9903.2      0.05       1.1       0.0                            209.2856
+    0:00:38    9908.0      0.05       1.1       0.0                            209.5411
+    0:00:39    9854.3      0.31       2.1       0.0                            208.0573
+    0:00:39    9843.5      0.33       2.5       0.0                            207.6689
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:00:41    9736.9      0.33       7.2       0.0                            201.5939
+    0:00:41    9737.5      0.07       1.6       0.0                            202.2664
+    0:00:41    9737.5      0.07       1.6       0.0                            202.2664
+    0:00:42    9741.3      0.07       0.6       0.0                            197.1222
+    0:00:42    9741.3      0.07       0.6       0.0                            197.1222
+    0:00:55   10232.0      0.07       0.6       0.0                            217.0903
+    0:00:55   10232.0      0.07       0.6       0.0                            217.0903
+    0:00:56   10353.3      0.05       0.4       0.0                            223.2239
+    0:00:56   10353.3      0.05       0.4       0.0                            223.2239
+    0:01:25   10896.2      0.04       0.4       0.0                            240.6635
+    0:01:25   10896.2      0.04       0.4       0.0                            240.6635
+    0:01:26   10890.5      0.00       0.0       0.0                            241.6781
+    0:01:26   10890.5      0.00       0.0       0.0                            241.6781
+    0:01:26   10890.5      0.00       0.0       0.0                            241.6781
+    0:01:26   10890.5      0.00       0.0       0.0                            241.6781
+    0:01:26   10890.5      0.00       0.0       0.0                            241.6781
+    0:01:26   10890.5      0.00       0.0       0.0                            241.6781
+    0:01:26   10890.5      0.00       0.0       0.0                            241.6781
+    0:01:26   10890.5      0.00       0.0       0.0                            241.6781
+    0:01:26   10890.5      0.00       0.0       0.0                            241.6781
+    0:01:26   10890.5      0.00       0.0       0.0                            241.6781
+    0:01:26   10890.5      0.00       0.0       0.0                            241.6781
+    0:01:26   10890.5      0.00       0.0       0.0                            241.6781
+    0:01:26   10890.5      0.00       0.0       0.0                            241.6781
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:01:26   10890.5      0.00       0.0       0.0                            241.6781
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+  Global Optimization (Phase 34)
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+  Global Optimization (Phase 42)
+  Global Optimization (Phase 43)
+  Global Optimization (Phase 44)
+  Global Optimization (Phase 45)
+  Global Optimization (Phase 46)
+  Global Optimization (Phase 47)
+Information: Complementing port 'column_cnt_r[10]' in design 'image_processor_with_MF'.
+	 The new name of the port is 'column_cnt_r[10]_BAR'. (OPT-319)
+Information: Complementing port 'column_cnt_r[9]' in design 'image_processor_with_MF'.
+	 The new name of the port is 'column_cnt_r[9]_BAR'. (OPT-319)
+Information: Complementing port 'column_cnt_r[5]' in design 'image_processor_with_MF'.
+	 The new name of the port is 'column_cnt_r[5]_BAR'. (OPT-319)
+Information: Complementing port 'column_cnt_r[2]' in design 'image_processor_with_MF'.
+	 The new name of the port is 'column_cnt_r[2]_BAR'. (OPT-319)
+Information: Complementing port 'hsynch_out' in design 'image_processor_with_MF'.
+	 The new name of the port is 'hsynch_out_BAR'. (OPT-319)
+Information: Complementing port 'update_frame_BAR' in design 'MN_packetizer_v1'.
+	 The new name of the port is 'update_frame'. (OPT-319)
+Information: Complementing port 'line_cnt_r[4]' in design 'image_processor_with_MF'.
+	 The new name of the port is 'line_cnt_r[4]_BAR'. (OPT-319)
+    0:01:30   10090.6      0.00       0.0       0.0                            203.9701
+    0:01:30   10090.6      0.00       0.0       0.0                            203.9701
+    0:01:30   10090.6      0.00       0.0       0.0                            203.9701
+    0:01:31    9877.6      0.00       0.0       0.0                            193.1523
+    0:01:31    9877.6      0.00       0.0       0.0                            193.1523
+    0:01:31    9877.6      0.00       0.0       0.0                            193.1523
+    0:01:31    9877.6      0.00       0.0       0.0                            193.1523
+    0:01:31    9877.6      0.00       0.0       0.0                            193.1523
+    0:01:31    9877.6      0.00       0.0       0.0                            193.1523
+    0:01:31    9877.6      0.00       0.0       0.0                            193.1523
+    0:01:31    9877.6      0.00       0.0       0.0                            193.1523
+    0:01:31    9877.6      0.00       0.0       0.0                            193.1523
+    0:01:31    9877.6      0.00       0.0       0.0                            193.1523
+    0:01:31    9877.6      0.00       0.0       0.0                            193.1523
+    0:01:31    9877.6      0.00       0.0       0.0                            193.1523
+    0:01:31    9877.6      0.00       0.0       0.0                            193.1523
+    0:01:31    9877.6      0.00       0.0       0.0                            193.1523
+    0:01:31    9877.6      0.00       0.0       0.0                            193.1523
+    0:01:31    9877.6      0.00       0.0       0.0                            193.1523
+    0:01:31    9877.6      0.00       0.0       0.0                            193.1523
+    0:01:31    9877.6      0.00       0.0       0.0                            193.1523
+    0:01:31    9877.6      0.00       0.0       0.0                            193.1523
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:01:31    9876.7      0.00       0.0       0.0                            193.1503
+    0:01:32    9680.1      0.00       0.0       0.0                            182.2130
+    0:01:33    9683.3      0.00       0.0       0.0                            182.3397
+    0:01:33    9683.3      0.00       0.0       0.0                            182.3397
+    0:01:33    9577.3      0.00       0.0       0.0                            177.6043
+    0:01:34    9550.1      0.00       0.0       0.0                            176.1106
+    0:01:34    9549.5      0.00       0.0       0.0                            176.1413
+    0:01:34    9549.5      0.00       0.0       0.0                            176.1413
+    0:01:34    9549.5      0.00       0.0       0.0                            176.1413
+    0:01:34    9549.5      0.00       0.0       0.0                            176.1413
+    0:01:34    9549.5      0.00       0.0       0.0                            176.1413
+    0:01:36    9289.0      0.00       0.0       0.0                            164.5363
+Loading db file '/2tb/home/ghanim/Desktop/depth_compression_hw/common/sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated black box outputs. (PWR-428)
+1
+ungroup -all -flatten
+Information: Updating graph... (UID-83)
+Warning: Design 'top_module' inherited license information from design 'image_processor_with_MF'. (DDB-74)
+Information: Added key list 'DesignWare' to design 'top_module'. (DDB-72)
+1
+current_design top_module
+Current design is 'top_module'.
+{top_module}
+compile_ultra -incremental -timing_high_effort_script
+Warning: The -timing_high_effort_script option is ignored.  (OPT-1342)
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+============================================================================
+| Flow Information                                                         |
+----------------------------------------------------------------------------
+| Flow         | Design Compiler                                           |
+============================================================================
+| Design Information                                      | Value          |
+============================================================================
+| Number of Scenarios                                     | 0              |
+| Leaf Cell Count                                         | 4690           |
+| Number of User Hierarchies                              | 0              |
+| Sequential Cell Count                                   | 559            |
+| Macro Count                                             | 0              |
+| Number of Power Domains                                 | 0              |
+| Design with UPF Data                                    | false          |
+============================================================================
+
+Information: There are 3 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping  (Incremental)
+  ------------------------
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: The library cell 'TIELO_X1M_A12TR40' in the library 'sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'TIEHI_X1M_A12TR40' in the library 'sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c' is not characterized for internal power. (PWR-536)
+Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:02    9287.1      0.00       0.0       0.0                            164.5328
+    0:00:02    9287.1      0.00       0.0       0.0                            164.5328
+
+  Beginning Mapping Optimizations  (Ultra High effort)  (Incremental)
+  -------------------------------
+
+  Beginning Incremental Implementation Selection
+  ----------------------------------------------
+    0:00:02    9356.1      0.02       0.2       0.0                            170.4916
+    0:00:02    9356.1      0.02       0.2       0.0                            170.4916
+    0:00:02    9356.1      0.02       0.2       0.0                            170.4916
+    0:00:03    9356.1      0.02       0.2       0.0                            170.4916
+  Global Optimization (Phase 48)
+  Global Optimization (Phase 49)
+  Global Optimization (Phase 50)
+  Global Optimization (Phase 51)
+  Global Optimization (Phase 52)
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:03    9337.6      0.05       1.7       0.0                            169.9891
+    0:00:03    9337.6      0.05       1.7       0.0                            169.9891
+    0:00:04    9242.1      0.04       1.5       0.0                            166.6260
+    0:00:04    9242.1      0.04       1.5       0.0                            166.6260
+    0:00:04    9522.1      0.00       0.0       0.0                            179.3884
+    0:00:04    9522.1      0.00       0.0       0.0                            179.3884
+    0:00:04    9522.1      0.00       0.0       0.0                            179.3884
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:00:04    9522.1      0.00       0.0       0.0                            179.3884
+    0:00:04    9522.1      0.00       0.0       0.0                            179.3884
+    0:00:04    9522.1      0.00       0.0       0.0                            179.3884
+    0:00:04    9522.1      0.00       0.0       0.0                            179.3884
+    0:00:04    9522.1      0.00       0.0       0.0                            179.3884
+    0:00:05    9520.1      0.01       0.1       0.0                            179.3617
+    0:00:05    9520.1      0.01       0.1       0.0                            179.3617
+    0:00:05    9396.9      0.00       0.0       0.0                            173.5667
+    0:00:05    9396.9      0.00       0.0       0.0                            173.5667
+    0:00:06    9411.9      0.00       0.0       0.0                            174.3685
+    0:00:06    9411.9      0.00       0.0       0.0                            174.3685
+    0:00:06    9411.9      0.00       0.0       0.0                            174.3685
+    0:00:06    9411.9      0.00       0.0       0.0                            174.3685
+    0:00:06    9411.9      0.00       0.0       0.0                            174.3685
+    0:00:06    9411.9      0.00       0.0       0.0                            174.3685
+    0:00:06    9411.9      0.00       0.0       0.0                            174.3685
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:06    9411.9      0.00       0.0       0.0                            174.3685
+    0:00:06    9410.0      0.00       0.0       0.0                            174.3525
+    0:00:07    9351.0      0.00       0.0       0.0                            171.5387
+    0:00:07    9351.0      0.00       0.0       0.0                            171.5387
+    0:00:07    9351.0      0.00       0.0       0.0                            171.5387
+    0:00:07    9351.0      0.00       0.0       0.0                            171.5387
+    0:00:07    9351.0      0.00       0.0       0.0                            171.5387
+    0:00:07    9351.0      0.00       0.0       0.0                            171.5387
+    0:00:07    9351.0      0.00       0.0       0.0                            171.5387
+    0:00:07    9351.0      0.00       0.0       0.0                            171.5387
+    0:00:07    9351.0      0.00       0.0       0.0                            171.5387
+    0:00:07    9351.9      0.00       0.0       0.0                            171.5405
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:07    9351.9      0.00       0.0       0.0                            171.5405
+    0:00:07    9341.1      0.00       0.0       0.0                            170.9855
+    0:00:08    9335.0      0.00       0.0       0.0                            168.9304
+    0:00:09    9267.0      0.00       0.0       0.0                            163.8667
+    0:00:10    9277.9      0.00       0.0       0.0                            164.1165
+    0:00:10    9277.9      0.00       0.0       0.0                            164.1165
+    0:00:10    9286.2      0.00       0.0       0.0                            164.5681
+    0:00:10    9286.2      0.00       0.0       0.0                            164.5681
+    0:00:10    9286.2      0.00       0.0       0.0                            164.5681
+    0:00:10    9286.2      0.00       0.0       0.0                            164.5681
+    0:00:10    9286.2      0.00       0.0       0.0                            164.5681
+    0:00:10    9286.2      0.00       0.0       0.0                            164.5681
+    0:00:10    9286.2      0.00       0.0       0.0                            164.5681
+    0:00:10    9286.2      0.00       0.0       0.0                            164.5681
+    0:00:10    9286.2      0.00       0.0       0.0                            164.5681
+    0:00:11    9104.2      0.00       0.0       0.0                            155.9173
+Loading db file '/2tb/home/ghanim/Desktop/depth_compression_hw/common/sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated black box outputs. (PWR-428)
+1
+check_design 
+ 
+****************************************
+check_design summary:
+Version:     S-2021.06-SP5
+Date:        Sat May 28 00:22:33 2022
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                      1
+    Unconnected ports (LINT-28)                                     1
+
+Designs                                                             1
+    Black box (LINT-55)                                             1
+--------------------------------------------------------------------------------
+
+Warning: In design 'top_module', port 'vsynch_in' is not connected to any nets. (LINT-28)
+Information: Design 'single_port_RAM' does not contain any cells or nets. (LINT-55)
+1
+report_timing
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : top_module
+Version: S-2021.06-SP5
+Date   : Sat May 28 00:22:33 2022
+****************************************
+
+Operating Conditions: ss_typical_max_0p81v_125c   Library: sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c
+Wire Load Model Mode: top
+
+  Startpoint: image_processor_with_MF_i/median_filter_i/filter_shift_reg_reg[1]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: image_processor_with_MF_i/median_filter_i/out_reg[4]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  top_module         Small                 sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  image_processor_with_MF_i/median_filter_i/filter_shift_reg_reg[1]/CK (DFFQ_X4M_A12TR40)
+                                                          0.00       0.00 r
+  image_processor_with_MF_i/median_filter_i/filter_shift_reg_reg[1]/Q (DFFQ_X4M_A12TR40)
+                                                          0.10       0.10 f
+  image_processor_with_MF_i/median_filter_i/sorter_1/U53/Y (INV_X5M_A12TR40)
+                                                          0.02       0.12 r
+  image_processor_with_MF_i/median_filter_i/sorter_1/U101/Y (NAND2_X4A_A12TR40)
+                                                          0.02       0.14 f
+  image_processor_with_MF_i/median_filter_i/sorter_1/U222/Y (NAND2_X3B_A12TR40)
+                                                          0.02       0.16 r
+  image_processor_with_MF_i/median_filter_i/sorter_1/U246/Y (NAND3_X4A_A12TR40)
+                                                          0.03       0.19 f
+  image_processor_with_MF_i/median_filter_i/sorter_1/U213/Y (NOR2_X6A_A12TR40)
+                                                          0.04       0.23 r
+  image_processor_with_MF_i/median_filter_i/sorter_1/U208/Y (OAI21_X8M_A12TR40)
+                                                          0.04       0.26 f
+  image_processor_with_MF_i/median_filter_i/sorter_1/U207/Y (OR2_X8M_A12TR40)
+                                                          0.05       0.31 f
+  image_processor_with_MF_i/median_filter_i/sorter_1/U201/Y (AND2_X11M_A12TR40)
+                                                          0.04       0.35 f
+  image_processor_with_MF_i/median_filter_i/sorter_1/U151/Y (OR2_X1P4M_A12TR40)
+                                                          0.05       0.40 f
+  image_processor_with_MF_i/median_filter_i/sorter_1/U228/Y (NAND3_X4A_A12TR40)
+                                                          0.03       0.43 r
+  image_processor_with_MF_i/median_filter_i/sorter_3/U31/Y (NAND2_X3B_A12TR40)
+                                                          0.03       0.46 f
+  image_processor_with_MF_i/median_filter_i/sorter_3/U23/Y (INV_X1M_A12TR40)
+                                                          0.04       0.50 r
+  image_processor_with_MF_i/median_filter_i/sorter_3/U53/Y (INV_X1P7B_A12TR40)
+                                                          0.04       0.54 f
+  image_processor_with_MF_i/median_filter_i/sorter_3/U8/Y (NAND2_X6A_A12TR40)
+                                                          0.03       0.56 r
+  image_processor_with_MF_i/median_filter_i/sorter_3/U122/Y (NAND2_X2A_A12TR40)
+                                                          0.02       0.59 f
+  image_processor_with_MF_i/median_filter_i/sorter_3/U129/Y (NAND2_X3A_A12TR40)
+                                                          0.03       0.62 r
+  image_processor_with_MF_i/median_filter_i/sorter_3/U119/Y (NAND2_X8A_A12TR40)
+                                                          0.03       0.65 f
+  image_processor_with_MF_i/median_filter_i/sorter_3/U146/Y (AOI22_X4M_A12TR40)
+                                                          0.05       0.69 r
+  image_processor_with_MF_i/median_filter_i/sorter_3/U149/Y (OAI21_X6M_A12TR40)
+                                                          0.03       0.72 f
+  image_processor_with_MF_i/median_filter_i/sorter_5/U37/Y (INV_X3P5M_A12TR40)
+                                                          0.03       0.75 r
+  image_processor_with_MF_i/median_filter_i/sorter_5/U10/Y (OAI21_X3M_A12TR40)
+                                                          0.03       0.78 f
+  U30/Y (NAND4_X4A_A12TR40)                               0.03       0.80 r
+  U29/Y (NAND3_X4A_A12TR40)                               0.04       0.84 f
+  U41/Y (AOI22_X8M_A12TR40)                               0.04       0.88 r
+  image_processor_with_MF_i/median_filter_i/sorter_5/U115/Y (OAI21_X8M_A12TR40)
+                                                          0.04       0.91 f
+  image_processor_with_MF_i/median_filter_i/sorter_5/U145/Y (AOI22_X2M_A12TR40)
+                                                          0.04       0.96 r
+  image_processor_with_MF_i/median_filter_i/sorter_5/U156/Y (OAI21_X4M_A12TR40)
+                                                          0.03       0.98 f
+  image_processor_with_MF_i/median_filter_i/out_reg[4]/D (DFFQ_X4M_A12TR40)
+                                                          0.00       0.98 f
+  data arrival time                                                  0.98
+
+  clock clk (rise edge)                                   1.00       1.00
+  clock network delay (ideal)                             0.00       1.00
+  image_processor_with_MF_i/median_filter_i/out_reg[4]/CK (DFFQ_X4M_A12TR40)
+                                                          0.00       1.00 r
+  library setup time                                     -0.02       0.98
+  data required time                                                 0.98
+  --------------------------------------------------------------------------
+  data required time                                                 0.98
+  data arrival time                                                 -0.98
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+1
+report_area
+ 
+****************************************
+Report : area
+Design : top_module
+Version: S-2021.06-SP5
+Date   : Sat May 28 00:22:33 2022
+****************************************
+
+Library(s) Used:
+
+    sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c (File: /2tb/home/ghanim/Desktop/depth_compression_hw/common/sc12mc_cln40g_base_rvt_c40_ss_typical_max_0p81v_125c.db)
+
+Number of ports:                          184
+Number of nets:                          4675
+Number of cells:                         4640
+Number of combinational cells:           4078
+Number of sequential cells:               562
+Number of macros/black boxes:               0
+Number of buf/inv:                        827
+Number of references:                     305
+
+Combinational area:               6376.019996
+Buf/Inv area:                      723.945612
+Noncombinational area:            2728.202449
+Macro/Black Box area:                0.000000
+Net Interconnect area:               0.000000
+
+Total cell area:                  9104.222445
+Total area:                       9104.222445
+1
+write -f verilog -hier -output top_module.vg top_module
+Writing verilog file '/2tb/home/ghanim/Desktop/depth_compression_hw/mf_and_mn_encoder/top_module.vg'.
+Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
+1
+quit
+
+Memory usage for this session 383 Mbytes.
+Memory usage for this session including child processes 383 Mbytes.
+CPU usage for this session 120 seconds ( 0.03 hours ).
+Elapsed time for this session 121 seconds ( 0.03 hours ).
+
+Thank you...

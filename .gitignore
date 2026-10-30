@@ -1,0 +1,11 @@
+# Build and EDA tool outputs
+build/
+*.vvp
+*.vcd
+*.saif
+*.jou
+*.log
+*.str
+*.Xil/
+*.Zone.Identifier
+*:Zone.Identifier
